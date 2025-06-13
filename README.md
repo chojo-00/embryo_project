@@ -57,7 +57,7 @@ python -m uvicorn main:app --reload
 GitHub 용량 제한(100MB)을 초과하여 모델 파일은 GitHub에 포함되어 있지 않습니다. 아래 링크를 통해 수동 다운로드 후, `models/` 폴더에 저장하세요:
 
 ```markdown
-[모델 다운로드 (Dropbox)](https://www.dropbox.com/s/abc1234/model.pth?dl=1](https://www.dropbox.com/scl/fi/94z2vmzcm7yzsmqfsmcro/embryo_sam_model?rlkey=pntnkarsz8t9lkv4777nnrnaw&st=h5ofslxs&dl=0)
+[모델 다운로드 (Dropbox)](https://www.dropbox.com/scl/fi/94z2vmzcm7yzsmqfsmcro/embryo_sam_model?rlkey=pntnkarsz8t9lkv4777nnrnaw&st=h5ofslxs&dl=1)
 ```
 
 - 예: `models/densenet_embryo.pth` 또는 `models/cellpose_custom_model`
@@ -77,5 +77,3 @@ embryo_project/
 ├── requirements.txt          # 의존성 목록
 └── README.md                 # 프로젝트 설명 문서
 ```
-
-
