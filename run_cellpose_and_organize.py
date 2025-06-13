@@ -26,7 +26,7 @@ command = [
     "python", "-m", "cellpose",
     "--image_path", image_path,
     "--use_gpu",
-    "--pretrained_model", r"C:/Users/yeong/cellpose/embryo_sam_model",  # ← 여기에 경로 추가
+    "--pretrained_model", r"C:/Users/yeong/rag-chatbot/cellpose/embryo_sam_model",  # ← 여기에 경로 추가
     "--chan", "0", "--chan2", "2",
     "--save_png",
 #    "--save_flows",
