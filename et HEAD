@@ -1,0 +1,29 @@
+[33mcommit 2fd64246560d13552e5d3c48f873462572d04cd2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: chojo-00 <qudrjs7509@naver.com>
+Date:   Fri Jun 13 13:55:34 2025 +0900
+
+    Remove large model file from Git tracking
+
+[33mcommit ede17970024cd69380c89d5fc7470afaa0eb716d[m
+Author: chojo-00 <qudrjs7509@naver.com>
+Date:   Fri Jun 13 13:47:28 2025 +0900
+
+    Re-add cellpose folder as regular directory after .git removal
+
+[33mcommit ddf0706acfb0cf749cd62cd806ddf76bea00ee88[m
+Author: chojo-00 <qudrjs7509@naver.com>
+Date:   Fri Jun 13 13:46:36 2025 +0900
+
+    Re-add cellpose folder as regular directory after .git removal
+
+[33mcommit 3062c113252239af0b66df34e7633e69566c7b22[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: chojo-00 <qudrjs7509@naver.com>
+Date:   Fri Jun 13 13:35:14 2025 +0900
+
+    처음 커밋
+
+[33mcommit aacd586bac8f9f967c74fbda3fe1296cd2dc770a[m
+Author: chojo-00 <qudrjs7509@naver.com>
+Date:   Fri Jun 13 13:28:38 2025 +0900
+
+    처음 커밋
