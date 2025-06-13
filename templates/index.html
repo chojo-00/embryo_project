@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Embryo Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- 왼쪽 패널 -->
+        <div class="left-panel">
+            <div class="upload-section">
+                <h3>🧬 Embryo Upload</h3>
+                <input type="file" id="image-upload" accept="image/png">
+                <button onclick="handleImageUpload()">업로드</button>
+                <button onclick="runModel()">모델 실행</button>
+                <!-- 초기화 버튼 -->
+                <button onclick="resetServer()" class="upload-btn">초기화</button>
+                <div class="image-preview-row">
+                    <div class="preview-card">
+                        <img id="original-image" class="preview-image">
+                    </div>
+                    <div class="preview-card">
+                        <img id="mask-image" class="preview-image">
+                    </div>
+                    <div class="preview-card">
+                        <img id="overlay-image" class="preview-image">
+                    </div>
+                </div>
+
+                <div class="embryo-info">
+                    <p><strong>Cell:</strong> <span id="preg-score"></span></p>
+                    <p><strong>Evenness:</strong> <span id="grade"></span></p>
+                    <p><strong>Fragmentation:</strong> <span id="circularity"></span></p>
+                </div>
+            </div>
+
+            <!-- 배아 순위 섹션을 Embryo Upload 아래로 이동 -->
+            <div class="ranking-section">
+                <h3>🏆 배아 순위</h3>
+                <div id="ranking-box"></div>
+            </div>
+
+            <div class="upload-pdf-section">
+                <h3>📄 PDF 업로드</h3>
+                <form id="upload-form">
+                    <input type="file" name="file" accept=".pdf">
+                    <button type="submit">업로드</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 오른쪽 패널 -->
+        <div class="right-panel">
+            <div class="simulation-section">
+                <h3>🧪 시뮬레이션</h3>
+
+                <div class="analysis-toggle">
+                    <button class="analysis-btn" onclick="showAnalysis('fragment')">파편화</button>
+                    <button class="analysis-btn" onclick="showAnalysis('roundness')">원형도</button>
+                </div>
+
+                <div class="analysis-box">
+                    <!-- 파편화 -->
+                    <div id="fragment-section" class="analysis-content" style="display: none;">
+                        <div class="roundness-container">
+                        <div class="roundness-buttons">
+                            <button class="sim-btn active" onclick="showFragmentImage(1, this)">1</button>
+                            <button class="sim-btn" onclick="showFragmentImage(2, this)">2</button>
+                            <button class="sim-btn" onclick="showFragmentImage(3, this)">3</button>
+                            <button class="sim-btn" onclick="showFragmentImage(4, this)">4</button>
+                        </div>
+                        <div class="roundness-image-box">
+                            <img id="sim-img" src="/static/f1.png" class="roundness-image">
+                        </div>
+                        <p id="fragment-description" class="description-text" style="display: none;"></p>
+                    </div>
+                </div>
+
+                    <!-- 원형도 -->
+                    <div id="roundness-section" class="analysis-content" style="display: none;">
+                        <div class="roundness-container">
+                            <div class="roundness-buttons">
+                                <button class="sim-btn active" onclick="showRoundnessImage(1, this)">2</button>
+                                <button class="sim-btn" onclick="showRoundnessImage(2, this)">2</button>
+                                <button class="sim-btn" onclick="showRoundnessImage(3, this)">3</button>
+                                <button class="sim-btn" onclick="showRoundnessImage(4, this)">3</button>
+                            </div>
+                            <div class="roundness-image-box">
+                                <img id="roundness-display" src="static/r1.png" class="roundness-image">
+                            </div>
+                            <p id="roundness-description" class="description-text" style="display: none;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chatbot-section">
+                <h3>🤖 AI 챗봇</h3>
+                <div class="chat-window" id="chat-window"></div>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="질문을 입력하세요">
+                    <button onclick="sendMessage()">전송</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

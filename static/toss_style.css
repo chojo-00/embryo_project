@@ -1,0 +1,883 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 50%, #f8fafc 100%);
+  min-height: 100vh;
+  font-weight: 400;
+  color: #334155;
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 24px;
+  max-width: 100%;
+  margin: 0;
+  min-height: calc(100vh - 48px);
+  width: 100%;
+}
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.right-panel {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+/* 공통 섹션 스타일 - 각 섹션별 테마 색상 */
+.upload-section, .ranking-section, .simulation-section, .upload-pdf-section, .chatbot-section {
+  padding-top: 12px !important;
+  height: auto !important;
+  min-height: auto !important;
+  flex-grow: 1;
+  height: auto;
+  background: white;
+  padding: 36px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-section:hover, .ranking-section:hover, .simulation-section:hover,
+.upload-pdf-section:hover, .chatbot-section:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* 각 섹션별 좌측 컬러 바 */
+.upload-section::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #06b6d4, #0891b2);
+}
+
+.ranking-section::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #f59e0b, #d97706);
+}
+
+.simulation-section::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #10b981, #059669);
+}
+
+.upload-pdf-section::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #ef4444, #dc2626);
+}
+
+.chatbot-section::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #8b5cf6, #7c3aed);
+}
+
+/* 제목 스타일 - 컬러풀하게 + 글씨 크기 증가 */
+.upload-section h3, .ranking-section h3, .simulation-section h3,
+.upload-pdf-section h3, .chatbot-section h3 {
+  margin: 0 0 32px 0;
+  font-size: 26px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f1f5f9;
+  position: relative;
+}
+
+.upload-section h3 {
+  color: #0891b2;
+}
+
+.ranking-section h3 {
+  color: #d97706;
+}
+
+.simulation-section h3 {
+  color: #059669;
+}
+
+.upload-pdf-section h3 {
+  color: #dc2626;
+}
+
+.chatbot-section h3 {
+  color: #7c3aed;
+}
+
+.upload-section h3::before {
+  content: "🧬";
+  font-size: 28px;
+  background: linear-gradient(45deg, #06b6d4, #0891b2);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.ranking-section h3::before {
+  content: "📊";
+  font-size: 28px;
+  background: linear-gradient(45deg, #f59e0b, #d97706);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.simulation-section h3::before {
+  content: "🔬";
+  font-size: 28px;
+  background: linear-gradient(45deg, #10b981, #059669);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.upload-pdf-section h3::before {
+  content: "📄";
+  font-size: 28px;
+  background: linear-gradient(45deg, #ef4444, #dc2626);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.chatbot-section h3::before {
+  content: "🤖";
+  font-size: 28px;
+  background: linear-gradient(45deg, #8b5cf6, #7c3aed);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+/* 업로드 섹션 - 시안 테마 */
+.upload-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+}
+
+.upload-section input[type="file"] {
+  margin-bottom: 24px;
+  padding: 22px;
+  border: 2px dashed #06b6d4;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 19px;
+  color: #0891b2;
+  font-weight: 500;
+}
+
+.upload-section input[type="file"]:hover {
+  border-color: #0891b2;
+  background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+  transform: scale(1.02);
+}
+
+.upload-section button {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: white;
+  border: none;
+  padding: 22px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 19px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+  margin-right: 12px;
+}
+
+.upload-section button:hover {
+  background: linear-gradient(135deg, #0891b2, #0e7490);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+}
+
+.image-preview-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 28px;
+  max-width: 100%;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.preview-card {
+  width: 650px;
+  height: 650px;
+  background-color: #e8fcff;
+  border: 2px solid #00bcd4;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  background: white;
+}
+
+.embryo-info {
+  background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+  padding: 28px;
+  border-radius: 8px;
+  border-left: 4px solid #06b6d4;
+  margin-top: 24px;
+  box-shadow: 0 2px 10px rgba(6, 182, 212, 0.1);
+}
+
+.embryo-info p {
+  margin: 12px 0;
+  font-size: 28px;
+  color: #0891b2;
+  font-weight: 600;
+}
+
+.embryo-info span {
+  font-weight: 600;
+  color: #0e7490;
+}
+
+/* PDF 업로드 섹션 - 레드 테마 */
+.upload-pdf-section {
+  margin-bottom: 0px;
+  background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+}
+
+.upload-pdf-section form {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.upload-pdf-section input[type="file"] {
+  flex: 1;
+  padding: 22px;
+  border: 2px solid #ef4444;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #fef2f2, #fecaca);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 19px;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.upload-pdf-section input[type="file"]:hover {
+  border-color: #dc2626;
+  background: linear-gradient(135deg, #fecaca, #fca5a5);
+  transform: scale(1.02);
+}
+
+.upload-pdf-section button {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border: none;
+  padding: 22px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 19px;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.upload-pdf-section button:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* 랭킹 섹션 - 오렌지 테마 */
+.ranking-section {
+  background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
+}
+
+#ranking-box {
+  font-size: 22px;
+  line-height: 1.6;
+  font-weight: 500;
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  padding: 36px;
+  border-radius: 8px;
+  border: 2px solid #f59e0b;
+  color: #92400e;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+  min-height: 300px;
+}
+
+/* 시뮬레이션 섹션 - 그린 테마 */
+.simulation-section {
+  margin-bottom: 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+}
+
+.analysis-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #10b981;
+}
+
+.analysis-btn {
+  flex: 1;
+  padding: 20px 24px;
+  font-size: 20px;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #059669;
+  transition: all 0.3s ease;
+}
+
+.analysis-btn:hover {
+  background: rgba(16, 185, 129, 0.2);
+  color: #047857;
+  transform: scale(1.05);
+}
+
+.analysis-btn.active {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.analysis-box {
+  background: linear-gradient(135deg, #ffffff, #f0fdf4);
+  border: 2px solid #10b981;
+  border-radius: 8px;
+  padding: 36px;
+  min-height: 850px;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
+}
+
+.fragment-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.sim-image {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  padding: 32px;
+  border-radius: 8px;
+  width: 700px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #10b981;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+}
+
+.sim-image img {
+  width: 100%;
+  height: 550px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.sim-buttons {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 12px;
+}
+
+.sim-btn {
+  background-color: white;
+  border: 2px solid #00b894;
+  color: #00b894;
+  padding: 16px 22px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 4px;
+  transition: 0.2s;
+  font-size: 18px;
+}
+
+.sim-btn:hover {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  transform: scale(1.05);
+}
+
+.sim-btn.active {
+  background-color: #00b894;
+  color: white;
+}
+
+.sim-table {
+  width: 550px;
+  border-collapse: collapse;
+  text-align: center;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #10b981;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+}
+
+.sim-table th {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  font-weight: 600;
+  padding: 32px;
+  font-size: 26px;
+}
+
+.sim-table td {
+  border-bottom: 1px solid #dcfce7;
+  padding: 28px;
+  font-weight: 500;
+  color: #059669;
+  font-size: 24px;
+}
+
+.sim-table tr:last-child td {
+  border-bottom: none;
+}
+
+.roundness-layout {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.roundness-image img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #10b981;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+}
+
+.roundness-text {
+  font-size: 22px;
+  line-height: 1.6;
+  color: #047857;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  padding: 40px;
+  border-radius: 8px;
+  border-left: 4px solid #10b981;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
+  max-width: 500px;
+}
+
+.roundness-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roundness-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.roundness-buttons button {
+  width: 80px;
+  height: 56px;
+  font-weight: bold;
+  font-size: 20px;
+  border: 2px solid #00cc88;
+  border-radius: 6px;
+  background-color: white;
+  color: #00aa66;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.roundness-buttons button:hover {
+  background-color: #00cc88;
+  color: white;
+}
+
+.roundness-image-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.roundness-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.roundness-image {
+  width: 100%;
+  max-width: 2000px;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 챗봇 섹션 - 퍼플 테마 */
+.chatbot-section {
+  padding-top: 12px !important;
+  height: auto !important;
+  min-height: auto !important;
+  flex-grow: 1;
+  height: auto;
+  background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+  display: flex;
+  flex-direction: column;
+  min-height: 450px;
+}
+
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  border: 2px solid #8b5cf6;
+  margin-bottom: 24px;
+  padding: 32px;
+  background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+  border-radius: 8px;
+  min-height: 350px;
+  max-height: none;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+}
+
+.chat-window::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-window::-webkit-scrollbar-track {
+  background: #f3e8ff;
+  border-radius: 4px;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8b5cf6, #7c3aed);
+  border-radius: 4px;
+}
+
+.chat-window::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7c3aed, #6d28d9);
+}
+
+.bubble {
+  margin: 24px 0;
+  padding: 24px 28px;
+  border-radius: 16px;
+  max-width: 80%;
+  font-size: 19px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.bubble.user {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.bubble.bot {
+  background: white;
+  color: #6d28d9;
+  border: 2px solid #8b5cf6;
+  border-bottom-left-radius: 6px;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.1);
+}
+
+.chat-input {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 22px 28px;
+  font-size: 19px;
+  border: 2px solid #8b5cf6;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffffff, #faf5ff);
+  color: #6d28d9;
+  transition: all 0.3s ease;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+}
+
+.chat-input input:focus {
+  outline: none;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+  background: white;
+}
+
+.chat-input button {
+  padding: 22px 32px;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 19px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.chat-input button:hover {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+/* 반응형 디자인 */
+  .left-panel, .right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+/*시각 효과 */
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Remove any extra spacing between simulation and chatbot */
+
+/* Custom purple chatbot area height */
+
+.chatbot-message-area {
+  min-height: 600px;
+}
+
+/* 전체 페이지 기본 폰트 크기 */
+body {
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* 주요 섹션 제목 (예: Embryo Upload, 시뮬레이션, AI 챗봇) */
+.section-title,
+.section-header,
+.card-header {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* 버튼 (예: 업로드, 모델 실행, 초기화, 전송) */
+button,
+.btn,
+.send-button {
+  font-size: 16px;
+}
+
+/* 파일 선택 안내 및 입력 필드 placeholder */
+input[type="file"],
+input::placeholder {
+  font-size: 15px;
+}
+
+h3 {
+  font-size: 45px !important;
+}
+
+button {
+  font-size: 30px !important;
+}
+
+.action-button {
+  font-size: 30px !important;
+}
+
+#ranking-box {
+  font-size: 40px !important;
+}
+
+.bubble.user {
+  font-size: 35px !important;
+}
+
+.bubble.bot {
+  font-size: 35px !important;
+}
+
+#user-input::placeholder {
+  font-size: 30px !important;
+}
+
+#user-input {
+  font-size: 30px;  /* 사용자 입력 텍스트 크기 */
+  height: 60px;
+  padding: 16px 20px;
+}
+
+#preg-score,
+#grade,
+#circularity {
+  font-size: 40px; 
+  font-weight: bold; 
+}
+
+
+.embryo-info p strong {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* 파편화 이미지 크기 조정 */
+#sim-img { 
+  width: 90%;          
+  max-width: 800px;
+  height: auto;
+}
+
+.description-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 45px; /* 시뮬레이션 문구 글씨 크기 */
+  font-weight: 500;
+  color: #c62828;  
+}
+
+/*
+.ranking-section,
+.simulation-section,
+.upload-pdf-section,
+.chatbot-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%) !important;
+}
+
+.ranking-section::before,
+.simulation-section::before,
+.upload-pdf-section::before,
+.chatbot-section::before {
+  background: linear-gradient(180deg, #06b6d4, #0891b2) !important;
+}
+
+.ranking-section h3,
+.simulation-section h3,
+.upload-pdf-section h3,
+.chatbot-section h3 {
+  color: #0891b2 !important;
+}
+
+.ranking-section h3::before,
+.simulation-section h3::before,
+.upload-pdf-section h3::before,
+.chatbot-section h3::before {
+  background: linear-gradient(45deg, #06b6d4, #0891b2) !important;
+}
+
+#ranking-box,
+.analysis-box,
+.chat-window,
+.upload-pdf-section input[type="file"],
+.upload-pdf-section button {
+  background: linear-gradient(135deg, #f0fdfa, #ccfbf1) !important;
+  border-color: #06b6d4 !important;
+  color: #0891b2 !important;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.1) !important;
+}
+
+.bubble.bot {
+  background: linear-gradient(135deg, #f0fdfa, #ccfbf1) !important;
+  border: 2px solid #06b6d4 !important;
+  color: #0e7490 !important;
+}
+
+.bubble.user {
+  background: linear-gradient(135deg, #06b6d4, #0891b2) !important;
+  color: white !important;
+}
+
+.chat-input input {
+  background: linear-gradient(135deg, #f0fdfa, #ccfbf1) !important;
+  border-color: #06b6d4 !important;
+  color: #0891b2 !important;
+}
+
+.chat-input button {
+  background: linear-gradient(135deg, #06b6d4, #0891b2) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2) !important;
+}
+
+.chat-input button:hover {
+  background: linear-gradient(135deg, #0891b2, #0e7490) !important;
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.3) !important;
+}
+
+.sim-image,
+.sim-table,
+.roundness-text {
+  background: linear-gradient(135deg, #f0fdfa, #ccfbf1) !important;
+  border-color: #06b6d4 !important;
+  color: #0891b2 !important;
+}
+
+
+.sim-table th {
+  background: linear-gradient(135deg, #06b6d4, #0891b2) !important;
+  color: white !important;
+}
+*/
